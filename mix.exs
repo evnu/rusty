@@ -31,7 +31,8 @@ defmodule Rusty.Mixfile do
   defp rustler_crates do
     [
       rusty: [
-        path: "native/rusty"
+        path: "native/rusty",
+        mode: :release
       ]
     ]
   end
