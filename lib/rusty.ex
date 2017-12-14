@@ -1,18 +1,3 @@
 defmodule Rusty do
-  @moduledoc """
-  Documentation for Rusty.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Rusty.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  use Rustler, otp_app: :rusty, crate: "rusty"
 end
