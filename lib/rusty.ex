@@ -65,4 +65,5 @@ defmodule Rusty do
   defp echo_wrapping_tuple(_t), do: throw :nif_not_loaded
   defp echo_record(_t), do: throw :nif_not_loaded
   defp echo_wrapping_record(_t), do: throw :nif_not_loaded
+  def echo_term(_t), do: throw :nif_not_loaded
 end

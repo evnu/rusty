@@ -68,6 +68,7 @@ rustler_export_nifs! {
         ("echo_wrapping_tuple", 1, echo_wrapping_tuple),
         ("echo_record", 1, echo_record),
         ("echo_wrapping_record", 1, echo_wrapping_record),
+        ("echo_term", 1, echo_term),
     ],
     None
 }
@@ -106,4 +107,8 @@ fn echo_wrapping_record<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<
     let r: WrappingRecord = args[0].decode()?;
 
     Ok(r.encode(env))
+}
+
+fn echo_term<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
+    Ok(args[0].encode(env))
 }

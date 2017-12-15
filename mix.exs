@@ -24,7 +24,8 @@ defmodule Rusty.Mixfile do
   defp deps do
     [
       {:rustler, "~>0.10"},
-      {:benchee, "~>0.11"}
+      {:benchee, "~>0.11"},
+      {:propcheck, "~> 1.0", only: :test}
     ]
   end
 
