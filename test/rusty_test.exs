@@ -7,7 +7,7 @@ defmodule RustyTest do
     numtests(
       1000_000,
       forall t <- term() do
-        File.write!("/tmp/data", :erlang.term_to_binary(t))
+        File.write!("/tmp/data", :erlang.term_to_binary(t), [:sync])
         result = Rusty.echo_term(t)
         when_fail(
           t == result,
