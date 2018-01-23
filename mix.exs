@@ -23,7 +23,7 @@ defmodule Rusty.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:rustler, "~>0.10"},
+      {:rustler, git: "https://github.com/hansihe/rustler", sparse: "rustler_mix"},
       {:benchee, "~>0.11"},
       {:propcheck, "~> 1.0", only: :test}
     ]

@@ -9,6 +9,6 @@ path = "src/lib.rs"
 crate-type = ["dylib"]
 
 [dependencies]
-rustler = "0.15.1"
-rustler_codegen = {git = "https://github.com/evnu/rustler", branch = "decode-record"}
+rustler = {git = "https://github.com/hansihe/rustler"}
+rustler_codegen = {git = "https://github.com/hansihe/rustler"}
 lazy_static = "0.2"
