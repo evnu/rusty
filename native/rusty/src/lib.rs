@@ -1,8 +1,11 @@
-#[macro_use] extern crate rustler;
-#[macro_use] extern crate rustler_codegen;
-#[macro_use] extern crate lazy_static;
+#[macro_use]
+extern crate lazy_static;
+#[macro_use]
+extern crate rustler;
+#[macro_use]
+extern crate rustler_codegen;
 
-use rustler::{NifEnv, NifTerm, NifResult, NifEncoder};
+use rustler::{NifEncoder, NifEnv, NifError, NifResult, NifTerm};
 
 mod atoms {
     rustler_atoms! {
@@ -13,102 +16,38 @@ mod atoms {
     }
 }
 
-#[derive(Debug, NifStruct)]
-#[module="Rusty.AStruct"]
-struct AStruct<'a> {
-    a: i64,
-    b: f64,
-    c: String,
-    d: NifTerm<'a>
-}
-
-#[derive(Debug, NifStruct)]
-#[module="Rusty.WrappingStruct"]
-struct WrappingStruct<'a> {
-    a: AStruct<'a>,
-    b: i64,
-}
-
-#[derive(Debug, NifTuple)]
-struct ATuple<'a> {
-    a: i64,
-    b: f64,
-    c: String,
-    d: NifTerm<'a>
-}
-
-#[derive(Debug, NifTuple)]
-struct WrappingTuple<'a> {
-    a: ATuple<'a>,
-    b: i64
-}
-
-#[derive(Debug, NifRecord)]
-#[tag = "arecord"]
-struct ARecord<'a> {
-    a: i64,
-    b: f64,
-    c: String,
-    d: NifTerm<'a>
-}
-
-#[derive(Debug, NifRecord)]
-#[tag = "wrappingrecord"]
-struct WrappingRecord<'a> {
-    a: ARecord<'a>,
-    b: i64
-}
 
 rustler_export_nifs! {
     "Elixir.Rusty",
     [
-        ("echo_struct", 1, echo_struct),
-        ("echo_wrapping_struct", 1, echo_wrapping_struct),
-        ("echo_tuple", 1, echo_tuple),
-        ("echo_wrapping_tuple", 1, echo_wrapping_tuple),
-        ("echo_record", 1, echo_record),
-        ("echo_wrapping_record", 1, echo_wrapping_record),
-        ("echo_term", 1, echo_term),
+        ("trampoline", 1, trampoline)
     ],
     None
 }
 
-fn echo_struct<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
-    let s: AStruct = args[0].decode()?;
+fn trampoline<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
+    let ident: String = args[0].decode()?;
 
-    Ok(s.encode(env))
+    match ident.as_ref() {
+        "test::test()" => test::test(),
+        "test::test2()" => test::test2(),
+        &_ => {
+            let error = NifError::RaiseTerm(Box::new(format!("Unknown test case {}", ident)));
+            return Err(error);
+        }
+    }
+
+    Ok(atoms::ok().encode(env))
 }
 
-fn echo_wrapping_struct<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
-    let s: WrappingStruct = args[0].decode()?;
+mod test {
+    use super::*;
 
-    Ok(s.encode(env))
-}
+    pub fn test() {
+        assert_eq!(true, false);
+    }
 
-fn echo_tuple<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
-    let r: ATuple = args[0].decode()?;
-
-    Ok(r.encode(env))
-}
-
-fn echo_wrapping_tuple<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
-    let r: WrappingTuple = args[0].decode()?;
-
-    Ok(r.encode(env))
-}
-
-fn echo_record<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
-    let r: ARecord = args[0].decode()?;
-
-    Ok(r.encode(env))
-}
-
-fn echo_wrapping_record<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
-    let r: WrappingRecord = args[0].decode()?;
-
-    Ok(r.encode(env))
-}
-
-fn echo_term<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
-    Ok(args[0].encode(env))
+    pub fn test2() {
+        assert_eq!(atoms::ok(), atoms::ok());
+    }
 }
