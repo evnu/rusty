@@ -75,6 +75,11 @@ fn run_tests<'a>(env: Env<'a>, args: &[Term<'a>]) -> NifResult<Term<'a>> {
 #[cfg(test)]
 mod tests {
     #[test]
+    fn success() {
+        assert!(true);
+    }
+
+    #[test]
     fn it_aint_pretty() {
         assert!(false, "but it'll do");
     }
