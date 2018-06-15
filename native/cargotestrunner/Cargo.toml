@@ -1,0 +1,15 @@
+[package]
+name = "cargotestrunner"
+version = "0.1.0"
+authors = []
+
+[lib]
+name = "cargotestrunner"
+path = "src/lib.rs"
+crate-type = ["dylib"]
+
+[dependencies]
+rustler = "0.17.0"
+rustler_codegen = "0.17.0"
+lazy_static = "1.0"
+cargo = "0.27"

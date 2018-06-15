@@ -34,6 +34,9 @@ defmodule Rusty.Mixfile do
       rusty: [
         path: "native/rusty",
         mode: :release
+      ],
+      cargotestrunner: [
+        path: "native/cargotestrunner"
       ]
     ]
   end
