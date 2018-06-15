@@ -7,11 +7,12 @@ extern crate rustler_codegen;
 
 extern crate cargo;
 
+use rustler::schedule::SchedulerFlags;
 use rustler::{Encoder, Env, NifResult, Term};
 
-use cargo::ops;
-use cargo::core::Workspace;
 use cargo::core::shell;
+use cargo::core::Workspace;
+use cargo::ops;
 use cargo::util::config;
 
 use std::path::PathBuf;
@@ -25,7 +26,7 @@ mod atoms {
 
 rustler_export_nifs! {
     "Elixir.CargoTestRunner",
-    [("run_tests", 3, run_tests, )],
+    [("run_tests", 3, run_tests, SchedulerFlags::DirtyCpu)],
     None
 }
 
