@@ -62,7 +62,6 @@ fn run_tests<'a>(env: Env<'a>, args: &[Term<'a>]) -> NifResult<Term<'a>> {
     match ops::run_tests(&ws, &options, &test_args) {
         Ok(None) => Ok(atoms::ok().encode(env)),
         Ok(Some(err)) => {
-            eprintln!("Errors running Cargo tests:\n{:?}", err);
             return Ok(atoms::failed().encode(env));
         }
         Err(err) => {
