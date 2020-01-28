@@ -1,4 +1,4 @@
-use rustler_codegen::NifMap;
+use rustler_codegen::NifTuple;
 
-#[derive(NifMap)]
+#[derive(NifTuple)]
 struct Struct;
