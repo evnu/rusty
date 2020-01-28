@@ -2,6 +2,7 @@ use rustler::Encoder;
 use rustler_codegen::NifStruct;
 
 #[derive(NifStruct)]
+#[rustler(encode)]
 #[module = "Elixir.Struct48"]
 struct Struct {
     field1: i64,
