@@ -1,4 +1,5 @@
-use rustler_codegen::NifTuple;
+use rustler_codegen::NifRecord;
 
-#[derive(NifTuple)]
+#[derive(NifRecord)]
+#[tag = "test"]
 struct Struct;
