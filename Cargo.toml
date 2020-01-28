@@ -7,5 +7,6 @@ members = [
     "native/benchmark_compile/08_struct",
     "native/benchmark_compile/16_struct",
     "native/benchmark_compile/32_struct",
+    "native/benchmark_compile/48_struct",
     "native/benchmark_compile/64_struct"
 ]

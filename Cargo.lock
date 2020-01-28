@@ -156,6 +156,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "struct_48"
+version = "0.1.0"
+dependencies = [
+ "rustler 0.21.0 (git+https://github.com/rusterlium/rustler)",
+ "rustler_codegen 0.21.0 (git+https://github.com/rusterlium/rustler)",
+]
+
+[[package]]
 name = "struct_64"
 version = "0.1.0"
 dependencies = [
