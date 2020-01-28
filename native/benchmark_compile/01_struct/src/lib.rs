@@ -1,8 +1,7 @@
 use rustler::Encoder;
-use rustler_codegen::NifStruct;
+use rustler_codegen::NifMap;
 
-#[derive(NifStruct)]
-#[module = "Elixir.Struct1"]
+#[derive(NifMap)]
 struct Struct {
     field1: i64,
 }

@@ -1,5 +1,4 @@
-use rustler_codegen::NifStruct;
+use rustler_codegen::NifMap;
 
-#[derive(NifStruct)]
-#[module = "Elixir.Struct0"]
+#[derive(NifMap)]
 struct Struct;
