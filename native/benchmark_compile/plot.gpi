@@ -10,3 +10,8 @@ set title "Rustler NifStruct Compile Time"
 
 plot "data.csv" using 1:2 w lines notitle, \
     "" using 1:2 w points notitle
+
+set terminal png enhanced
+set output "plot.png"
+
+replot
