@@ -1,0 +1,11 @@
+[workspace]
+members = [
+    "native/benchmark_compile/00_struct",
+    "native/benchmark_compile/01_struct",
+    "native/benchmark_compile/02_struct",
+    "native/benchmark_compile/04_struct",
+    "native/benchmark_compile/08_struct",
+    "native/benchmark_compile/16_struct",
+    "native/benchmark_compile/32_struct",
+    "native/benchmark_compile/64_struct"
+]

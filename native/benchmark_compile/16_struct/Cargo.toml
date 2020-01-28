@@ -1,0 +1,14 @@
+[package]
+name = "struct_16"
+version = "0.1.0"
+authors = ["Magnus Ottenklinger <evnu@posteo.de>"]
+edition = "2018"
+
+[lib]
+name = "benchmark16"
+path = "src/lib.rs"
+crate-type = ["dylib"]
+
+[dependencies]
+rustler = { git = "https://github.com/rusterlium/rustler" }
+rustler_codegen = { git = "https://github.com/rusterlium/rustler" }
