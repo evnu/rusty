@@ -1,4 +1,3 @@
-use rustler::Encoder;
 use rustler_codegen::NifStruct;
 
 #[derive(NifStruct)]

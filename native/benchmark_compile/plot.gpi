@@ -1,0 +1,12 @@
+#!/usr/bin/gnuplot
+
+set terminal pdf enhanced
+set output "plot.pdf"
+
+set xlabel "number of fields"
+set ylabel "compile time [seconds]"
+
+set title "Rustler NifStruct Compile Time"
+
+plot "data.csv" using 1:2 w lines notitle, \
+    "" using 1:2 w points notitle

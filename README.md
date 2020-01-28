@@ -21,4 +21,9 @@ exploding.
 
 ## Running a Compile Benchmark
 
-`native/benchmark_compile/` contains a benchmark to evaluate how fast or slow `rustler_codegen` is. Run it with `benchmark.sh` in that directory.
+`native/benchmark_compile/` contains a benchmark to evaluate how fast or slow
+`rustler_codegen` is. Run it with `benchmark.sh` in that directory. Note that
+the script makes use of [Gnu time](https://www.gnu.org/software/time/).
+
+The benchmark writes a file `data.csv`, which can be plotted with `plot.gpi`,
+provided that gnuplot is available.
