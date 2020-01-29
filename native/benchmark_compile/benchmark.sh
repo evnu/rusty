@@ -15,7 +15,7 @@ cargo clean
 
 cd 00_struct
 echo "prebuilding dependencies.."
-cargo build --release || exit 1
+cargo build --release -q || exit 1
 
 cd -
 
