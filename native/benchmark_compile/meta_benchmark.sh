@@ -10,10 +10,9 @@ commits[NifMap]=0b6efcc
 commits[NifTuple]=0fba4f9
 commits[NifRecord]=456d6f0
 
-original_pwd=$(pwd)
-
 finish() {
-    cd $original_pwd
+    root_directory=$(git rev-parse --show-toplevel)
+    cd $root_directory
     git checkout .
     git checkout master
     exit
