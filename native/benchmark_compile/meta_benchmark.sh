@@ -22,7 +22,7 @@ finish() {
 trap finish INT TERM EXIT
 
 abort() {
-    echo >&2 $0
+    echo >&2 $1
     exit 1
 }
 
@@ -35,7 +35,8 @@ for desc in "${!commits[@]}"; do
 
 	sed -i "s/master/$branch/g" */Cargo.toml
 
-	RUSTFLAGS=-Awarnings ./benchmark.sh || abort "benchmark failed"
+	echo "  branch $branch of rustler_codegen"
+	RUSTFLAGS=-Awarnings ./benchmark.sh &>/dev/null || abort "benchmark failed"
 	git checkout . &> /dev/null || abort "git checkout . failed"
 
 	./plot.gpi
